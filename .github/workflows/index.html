@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Али 🎶</title>
+    <style>
+        /* Основа — тёмный фон с акцентами как в её грустных треках */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Конверт-письмо с анимацией открытия */
+        .letter {
+            max-width: 600px;
+            margin: 50px auto;
+            background: linear-gradient(to bottom, #1a1a1a 0%, #111 100%);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.5s forwards 0.5s;
+            border: 1px solid #ff69b4;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Заголовок с эффектом неоновой вывески */
+        h1 {
+            color: #ff69b4;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            font-weight: 300;
+        }
+        
+        /* Цитаты как треки в плейлисте */
+        .quote {
+            background: rgba(30, 30, 30, 0.7);
+            border-left: 3px solid #ff69b4;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: "🎵";
+            position: absolute;
+            left: -25px;
+            top: 10px;
+        }
+        
+        /* Кнопка как виниловая пластинка */
+        button {
+            background: radial-gradient(circle, #ff69b4 30%, #9a1f6a 100%);
+            color: white;
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: block;
+            margin: 30px auto;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s;
+            outline: none;
+        }
+        
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+        }
+        
+        /* Анимация мерцания как свет софитов */
+        .spotlight {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            animation: moveSpotlight 15s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes moveSpotlight {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50%, 50%); }
+            50% { transform: translate(100%, 0); }
+            75% { transform: translate(50%, -50%); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        /* Подпись как автограф на конверте */
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.8em;
+            color: #ff69b4;
+            text-align: right;
+            margin-top: 30px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .letter { margin: 20px; padding: 20px; }
+            h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Фон-софиты -->
+    <div class="spotlight"></div>
+    
+    <!-- Основное письмо -->
+    <div class="letter">
+        <h1>Аля, привет 🌙</h1>
+        
+        <p>Ты когда-нибудь замечала, как музыка описывает нас лучше любых слов? Вот я послушал твой плейлист и...</p>
+        
+        <div class="quote">
+            "Ты — как трек, который начинается с агрессивного бита, но в середине раскрывается тихим фортепиано."
+        </div>
+        
+        <p>В тебе есть:</p>
+        <ul>
+            <li>Энергия <strong>DISCOTECH</strong> — когда хочется зажечь;</li>
+            <li>Глубина <strong>«Сирены»</strong> — когда ищешь смысл в дожде за окном;</li>
+            <li>И этот едкий сарказм <strong>Laffy Taffy</strong> — чтобы никто не догадался, что внутри.</li>
+        </ul>
+        
+        <div class="quote">
+            "Я бы поставил тебя на репит. Не потому что не знаю других песен, а потому что в тебе — весь спектр эмоций."
+        </div>
+        
+        <button id="inviteBtn">Play</button>
+        
+        <p>P.S. Кофе или танцы под <strong>Para Na Posição</strong>? Выбирай. Я готов даже к <strong>SleepMode</strong> — если это твой сегодняшний ритм.</p>
+        
+        <div class="signature">Твой слушатель</div>
+    </div>
+    
+    <script>
+        // Анимация кнопки-пластинки
+        const btn = document.getElementById('inviteBtn');
+        let rotation = 0;
+        
+        btn.addEventListener('click', () => {
+            // Меняем текст при нажатии
+            btn.textContent = '...';
+            
+            // Имитация загрузки
+            setTimeout(() => {
+                btn.textContent = '✓';
+                btn.style.background = 'radial-gradient(circle, #4CAF50 30%, #2E7D32 100%)';
+                
+                // Создаём эффект "воспроизведения"
+                const player = document.createElement('div');
+                player.innerHTML = `
+                    <audio autoplay loop>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    </audio>
+                    <p style="text-align: center; margin-top: 10px; color: #ff69b4;">Твой саундтрек уже играет...</p>
+                `;
+                document.body.appendChild(player);
+                
+                // Анимация вращения
+                setInterval(() => {
+                    rotation += 2;
+                    btn.style.transform = `scale(1.1) rotate(${rotation}deg)`;
+                }, 50);
+            }, 1000);
+        });
+        
+        // Плавное появление элементов при скролле
+        document.addEventListener('DOMContentLoaded', () => {
+            const quotes = document.querySelectorAll('.quote');
+            quotes.forEach((quote, i) => {
+                quote.style.opacity = '0';
+                quote.style.transition = `opacity 0.5s ease ${i * 0.3}s`;
+                setTimeout(() => { quote.style.opacity = '1'; }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
