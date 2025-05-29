@@ -3,279 +3,531 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для Айлины 🖤</title>
+    <title>Марат Мавлютов | Солдат. Учитель. Стратег.</title>
     <style>
-        /* Готическая основа с кровавыми акцентами */
+        :root {
+            --military: #5d5d5d;
+            --code: #2d5d7b;
+            --teaching: #7b5d2d;
+            --accent: #8b0000;
+            --light: #f0f0f0;
+        }
+        
         body {
-            font-family: 'Georgia', serif;
-            background-color: #0a0a0a;
+            font-family: 'Courier New', monospace;
+            background-color: #121212;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
-            line-height: 1.8;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
+            line-height: 1.6;
         }
-
-        /* Конверт с эффектом старинного письма */
-        .letter {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #111;
-            border-radius: 0;
-            padding: 40px;
-            box-shadow: 0 0 0 1px #8b0000, 
-                        0 0 30px rgba(139, 0, 0, 0.3);
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 2s forwards 0.5s;
-            border-left: 5px solid #8b0000;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Заголовок с эффектом кровавых чернил */
-        h1 {
-            color: #8b0000;
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 30px;
-            text-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
-            font-weight: normal;
-            letter-spacing: 2px;
-            position: relative;
-        }
-
-        h1::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(to right, #8b0000, transparent);
-            margin: 15px auto;
-        }
-
-        /* Цитаты как надписи на стенах */
-        .quote {
-            background: rgba(20, 20, 20, 0.7);
-            border-left: 3px solid #8b0000;
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 20px;
-            margin: 25px 0;
-            font-style: italic;
+        }
+        
+        /* Анимация печатающегося текста */
+        .typewriter {
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2.2em;
+            margin: 40px 0;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent) }
+        }
+        
+        /* Блоки с наведением */
+        .hover-blocks {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+        
+        .hover-block {
+            width: 30%;
+            min-height: 100px;
+            padding: 20px;
+            margin-bottom: 20px;
             position: relative;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .quote::before {
-            content: "✞";
-            position: absolute;
-            left: -30px;
-            top: 10px;
-            color: #8b0000;
-            font-size: 1.5em;
-        }
-
-        /* Кнопка-кристалл с кровью */
-        button {
-            background: radial-gradient(circle, 
-                rgba(139, 0, 0, 0.8) 0%, 
-                rgba(30, 30, 30, 0.9) 70%);
-            color: #fff;
-            border: 1px solid #8b0000;
-            width: 80px;
-            height: 80px;
-            border-radius: 5px;
-            display: block;
-            margin: 40px auto;
             cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(139, 0, 0, 0.5),
-                        inset 0 0 10px rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
-            transform: rotate(45deg);
-            position: relative;
+            border: 1px solid #333;
             overflow: hidden;
         }
-
-        button:hover {
-            transform: rotate(45deg) scale(1.1);
-            box-shadow: 0 0 30px rgba(139, 0, 0, 0.8);
+        
+        .hover-block.military { background-color: var(--military); }
+        .hover-block.code { background-color: var(--code); }
+        .hover-block.teaching { background-color: var(--teaching); }
+        
+        .hover-block h3 {
+            margin-top: 0;
+            font-size: 1.3em;
         }
-
-        button::before {
-            content: "";
+        
+        .hover-block .hidden-text {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 45%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 55%
-            );
-            transform: rotate(45deg);
-        }
-
-        /* Анимация капель крови */
-        .blood-drop {
-            position: fixed;
-            width: 2px;
-            height: 2px;
-            background: #8b0000;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
             opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
         }
-
-        /* Подпись как старинная печать */
-        .signature {
-            font-family: 'Old English Text MT', fantasy;
-            font-size: 2em;
-            color: #8b0000;
-            text-align: right;
-            margin-top: 40px;
+        
+        .hover-block:hover .hidden-text {
+            opacity: 1;
+        }
+        
+        /* Шкала навыков */
+        .skills {
+            margin: 50px 0;
+        }
+        
+        .skill {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 20px;
+            background-color: #333;
             position: relative;
         }
-
-        .signature::after {
-            content: "";
-            display: block;
-            position: absolute;
-            right: 0;
-            bottom: -10px;
-            width: 100px;
-            height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M20,25 Q50,0 80,25 Q50,50 20,25" fill="none" stroke="%238b0000" stroke-width="1"/></svg>');
-            opacity: 0.5;
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            transition: width 1s;
         }
-
-        /* Адаптивность */
-        @media (max-width: 600px) {
-            .letter { margin: 20px; padding: 20px; }
-            h1 { font-size: 2em; }
+        
+        .skill-tooltip {
+            display: none;
+            position: absolute;
+            background-color: #000;
+            border: 1px solid var(--accent);
+            padding: 5px 10px;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+        }
+        
+        .skill:hover .skill-tooltip {
+            display: block;
+        }
+        
+        /* Философские цитаты */
+        .quotes {
+            margin: 50px 0;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .quote-card {
+            position: absolute;
+            width: 100%;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border-left: 5px solid var(--accent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .quote-card.active {
+            opacity: 1;
+        }
+        
+        .quote-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .quote-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #333;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .quote-dot.active {
+            background-color: var(--accent);
+        }
+        
+        /* Раздел "Кто я вне работы" */
+        .hobbies {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .hobby-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .hobby-icon {
+            font-size: 3em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .hobby-icon:hover {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+        
+        .hobby-content {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+        }
+        
+        .hobby-content.active {
+            display: block;
+        }
+        
+        /* Форма диалога */
+        .dialog {
+            margin: 50px 0;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+        }
+        
+        .dialog-options {
+            margin: 20px 0;
+        }
+        
+        .dialog-option {
+            margin: 10px 0;
+        }
+        
+        .project-details {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .send-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .send-btn:hover {
+            background-color: #6b0000;
+        }
+        
+        /* Easter Egg */
+        .easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            padding: 20px;
+            border: 3px solid var(--accent);
+            z-index: 100;
+            display: none;
+        }
+        
+        .easter-egg img {
+            image-rendering: pixelated;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .close-egg {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Основное письмо -->
-    <div class="letter">
-        <h1>Айлина, привет</h1>
+    <div class="container">
+        <!-- Заголовок с эффектом печатающегося текста -->
+        <div class="typewriter">> Hello World. Я — Мавлютов Марат. Солдат. Учитель. Стратег.</div>
         
-        <p>Ты когда-нибудь замечала, как тьма может быть прекрасной? Как боль иногда поёт слаще любви? Я слушал твою душу через музыку и...</p>
-        
-        <div class="quote">
-            "Ты — как пламя в соборе: тебя пытаются затушить, но ты освещаешь то, что другие боятся увидеть."
+        <!-- Блоки для наведения курсора -->
+        <div class="hover-blocks">
+            <div class="hover-block military">
+                <h3>Военная служба</h3>
+                <div class="hidden-text">
+                    Год службы в ТСО. Старший мастер. Научился договариваться даже с теми, кто считал себя непобедимым.
+                </div>
+            </div>
+            
+            <div class="hover-block code">
+                <h3>Программирование</h3>
+                <div class="hidden-text">
+                    Пишу на Python, но верю, что лучший код — это понятный код. Люблю задачи, где надо ломать голову.
+                </div>
+            </div>
+            
+            <div class="hover-block teaching">
+                <h3>Педагогика</h3>
+                <div class="hidden-text">
+                    Учил детей в 19 лет. Главный урок: чтобы быть услышанным, иногда надо замолчать.
+                </div>
+            </div>
         </div>
         
-        <p>Я понял, что в тебе живёт:</p>
-        <ul>
-            <li><strong>Бунт</strong> — когда мир кажется слишком тесным;</li>
-            <li><strong>Глубина</strong> — которая пугает обычных людей;</li>
-            <li><strong>Голод</strong> — не по еде, а по эмоциям, что рвут душу на части.</li>
-        </ul>
-        
-        <div class="quote">
-            "Ты ненавидишь, когда тебя называют 'депрессивной' — потому что твоя тьма не болезнь, а выбор."
+        <!-- Шкала навыков -->
+        <div class="skills">
+            <h2>Навыки и характеристики</h2>
+            
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Холодная голова в кризисах</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%"></div>
+                </div>
+            </div>
+            
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Верность своим принципам</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            
+            <div class="skill">
+                <div class="skill-name">
+                    <span>Терпение к человеческой глупости</span>
+                    <span>60%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 60%"></div>
+                    <div class="skill-tooltip">Но только если она не угрожает моим проектам</div>
+                </div>
+            </div>
         </div>
         
-        <button id="inviteBtn">Прикоснуться</button>
+        <!-- Философия в цитатах -->
+        <div class="quotes">
+            <h2>Философия в цитатах</h2>
+            
+            <div class="quote-card active">
+                <p>"«Хочешь мира — готовься к войне». Но настоящая победа — когда оружие не понадобилось."</p>
+            </div>
+            
+            <div class="quote-card">
+                <p>"Перфекционизм — это зависимость. Я предпочитаю «достаточно хорошо» + кофе."</p>
+            </div>
+            
+            <div class="quote-card">
+                <p>"Доверие — как страйкбольный матч: если союзник подвёл, это не предательство. Это повод пересмотреть тактику."</p>
+            </div>
+            
+            <div class="quote-nav">
+                <div class="quote-dot active" data-index="0"></div>
+                <div class="quote-dot" data-index="1"></div>
+                <div class="quote-dot" data-index="2"></div>
+            </div>
+        </div>
         
-        <p>P.S. Давай создадим наш собственный культ? Где можно будет либо сгореть вместе, либо найти то, что скрыто за шипами.</p>
+        <!-- Кто я вне работы -->
+        <div class="hobbies">
+            <h2>Кто я вне работы</h2>
+            
+            <div class="hobby-icons">
+                <div class="hobby-icon" data-hobby="airsoft">🎮</div>
+                <div class="hobby-icon" data-hobby="anime">🎥</div>
+                <div class="hobby-icon" data-hobby="books">📚</div>
+            </div>
+            
+            <div class="hobby-content" id="airsoft-content">
+                <h3>Страйкбол</h3>
+                <p>Командую дронами. Мечтаю собрать эскадрон «Не только пули».</p>
+                <!-- Здесь можно добавить видео -->
+            </div>
+            
+            <div class="hobby-content" id="anime-content">
+                <h3>Аниме</h3>
+                <p>Топ-3 тайтлов:</p>
+                <ul>
+                    <li>Атака Титанов</li>
+                    <li>Берсерк</li>
+                    <li>Ковбой Бибоп</li>
+                </ul>
+                <p>Ищу тех, кто понимает, что Эрен — не герой.</p>
+                <!-- Здесь можно добавить галерею -->
+            </div>
+            
+            <div class="hobby-content" id="books-content">
+                <h3>Книги</h3>
+                <p>Мои фавориты:</p>
+                <ul>
+                    <li>Искусство войны</li>
+                    <li>1984</li>
+                    <li>Клинок, рассекающий демонов</li>
+                </ul>
+                <!-- Здесь можно добавить 3D полку -->
+            </div>
+        </div>
         
-        <div class="signature">Твой исповедник</div>
+        <!-- Форма диалога -->
+        <div class="dialog">
+            <h2>Диалог</h2>
+            <p>Хотите обсудить:</p>
+            
+            <div class="dialog-options">
+                <div class="dialog-option">
+                    <input type="checkbox" id="option1">
+                    <label for="option1">Тактику в страйкболе</label>
+                </div>
+                
+                <div class="dialog-option">
+                    <input type="checkbox" id="option2">
+                    <label for="option2">Почему Python лучше PHP</label>
+                </div>
+                
+                <div class="dialog-option">
+                    <input type="checkbox" id="option3">
+                    <label for="option3">Глубинный смысл финала «Атаки Титанов»</label>
+                </div>
+                
+                <div class="dialog-option">
+                    <input type="checkbox" id="option4">
+                    <label for="option4">Ваш проект</label>
+                    <div class="project-details" id="project-details">
+                        <textarea placeholder="Опишите ваш проект..." rows="4" style="width: 100%; margin-top: 10px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="send-btn">> В бой</button>
+        </div>
+    </div>
+    
+    <!-- Easter Egg -->
+    <div class="easter-egg" id="easter-egg">
+        <span class="close-egg">×</span>
+        <img src="https://i.imgur.com/placeholder.png" alt="Левая из Атаки Титанов">
+        <p>Да, я тоже верю, что стены — чтобы их ломать.</p>
     </div>
     
     <script>
-        // Анимация кнопки-кристалла
-        const btn = document.getElementById('inviteBtn');
+        // Переключение цитат
+        const quoteCards = document.querySelectorAll('.quote-card');
+        const quoteDots = document.querySelectorAll('.quote-dot');
         
-        btn.addEventListener('mouseenter', () => {
-            // Создаём эффект кровоточащего кристалла
-            for (let i = 0; i < 5; i++) {
-                createBloodDrop(btn);
-            }
-        });
-        
-        btn.addEventListener('click', () => {
-            // Меняем текст при нажатии
-            btn.textContent = '...';
-            
-            // Создаём больше капель крови
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => createBloodDrop(btn), i * 100);
-            }
-            
-            // Имитация загрузки
-            setTimeout(() => {
-                btn.textContent = '✓';
+        quoteDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = dot.getAttribute('data-index');
                 
-                // Создаём эффект "посвящения"
-                const ritual = document.createElement('div');
-                ritual.innerHTML = `
-                    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-                        background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-                        z-index: 999; display: flex; justify-content: center; align-items: center;
-                        animation: fadeIn 1s forwards;">
-                        <p style="color: #8b0000; font-size: 2em; text-align: center; text-shadow: 0 0 10px #000;">
-                            "Ты нашла того, кто не испугается твоих демонов"<br><br>
-                            <span style="font-size: 0.7em;">(нажми в любом месте, чтобы продолжить)</span>
-                        </p>
-                    </div>
-                `;
-                document.body.appendChild(ritual);
+                quoteCards.forEach(card => card.classList.remove('active'));
+                quoteDots.forEach(d => d.classList.remove('active'));
                 
-                // Закрытие эффекта по клику
-                ritual.addEventListener('click', () => {
-                    ritual.style.animation = 'fadeOut 1s forwards';
-                    setTimeout(() => ritual.remove(), 1000);
-                });
-            }, 1500);
-        });
-        
-        // Создание капель крови
-        function createBloodDrop(element) {
-            const drop = document.createElement('div');
-            drop.className = 'blood-drop';
-            
-            const rect = element.getBoundingClientRect();
-            const x = rect.left + rect.width/2 + (Math.random() - 0.5) * 50;
-            const y = rect.top + rect.height/2 + (Math.random() - 0.5) * 50;
-            
-            drop.style.left = `${x}px`;
-            drop.style.top = `${y}px`;
-            
-            document.body.appendChild(drop);
-            
-            // Анимация падения
-            const animation = drop.animate([
-                { opacity: 1, transform: 'scale(1)' },
-                { opacity: 0, transform: 'scale(0.5) translateY(100px)' }
-            ], {
-                duration: 2000 + Math.random() * 1000,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                quoteCards[index].classList.add('active');
+                dot.classList.add('active');
             });
-            
-            animation.onfinish = () => drop.remove();
-        }
+        });
         
-        // Плавное появление элементов при скролле
-        document.addEventListener('DOMContentLoaded', () => {
-            const quotes = document.querySelectorAll('.quote');
-            quotes.forEach((quote, i) => {
-                quote.style.opacity = '0';
-                quote.style.transition = `opacity 1s ease ${i * 0.5}s`;
-                setTimeout(() => { quote.style.opacity = '1'; }, 500);
+        // Автоматическое переключение цитат
+        let currentQuote = 0;
+        setInterval(() => {
+            currentQuote = (currentQuote + 1) % quoteCards.length;
+            
+            quoteCards.forEach(card => card.classList.remove('active'));
+            quoteDots.forEach(d => d.classList.remove('active'));
+            
+            quoteCards[currentQuote].classList.add('active');
+            quoteDots[currentQuote].classList.add('active');
+        }, 5000);
+        
+        // Переключение хобби
+        const hobbyIcons = document.querySelectorAll('.hobby-icon');
+        const hobbyContents = document.querySelectorAll('.hobby-content');
+        
+        hobbyIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const hobby = icon.getAttribute('data-hobby');
+                
+                hobbyContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(`${hobby}-content`).classList.add('active');
+            });
+        });
+        
+        // Показать детали проекта
+        document.getElementById('option4').addEventListener('change', function() {
+            document.getElementById('project-details').style.display = 
+                this.checked ? 'block' : 'none';
+        });
+        
+        // Easter Egg
+        let clickCount = 0;
+        document.body.addEventListener('click', (e) => {
+            if (e.target === document.body || e.target.classList.contains('container')) {
+                clickCount++;
+                
+                if (clickCount >= 2) {
+                    document.getElementById('easter-egg').style.display = 'block';
+                    clickCount = 0;
+                }
+                
+                setTimeout(() => clickCount = 0, 500);
+            }
+        });
+        
+        document.querySelector('.close-egg').addEventListener('click', () => {
+            document.getElementById('easter-egg').style.display = 'none';
+        });
+        
+        // Анимация загрузки навыков
+        window.addEventListener('load', () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
             });
         });
     </script>
 </body>
-</html> 
+</html>
